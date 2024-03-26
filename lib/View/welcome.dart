@@ -1,4 +1,5 @@
 import 'package:book_app/Utils/navigate_status.dart';
+import 'package:book_app/View/demoHome.dart';
 import 'package:book_app/View/home.dart';
 import 'package:book_app/View/loginPage.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class _welcomeState extends State<welcome> {
               color: Colors.white,
             ),
             Text(
-              "BookApp",
+              "Book Bazaar",
               style: TextStyle(color: Colors.white),
             )
           ],
@@ -54,9 +55,9 @@ class _welcomeState extends State<welcome> {
           return Column(
             children: [
               const Padding(
-                padding: EdgeInsets.only(left: 80, right: 80),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                padding: EdgeInsets.only(left: 20, right: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     NavigateStatus(a: 147, b: 177, c: 166, o: 1),
                     NavigateStatus(a: 147, b: 177, c: 166, o: 1),
@@ -95,7 +96,7 @@ class _welcomeState extends State<welcome> {
                   onPressed: () {
                     Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (context) => const Home()),
+                        MaterialPageRoute(builder: (context) => const DemoHome()),
                         (route) => false);
                   },
                   style: ElevatedButton.styleFrom(

@@ -18,7 +18,7 @@ class ConfirmPage extends StatelessWidget {
               color: Colors.white,
             ),
             Text(
-              "BookApp",
+              "Book Bazaar",
               style: TextStyle(color: Colors.white),
             )
           ],
@@ -27,9 +27,9 @@ class ConfirmPage extends StatelessWidget {
       body: Column(
         children: [
           const Padding(
-            padding: EdgeInsets.only(left: 80, right: 80),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            padding: EdgeInsets.only(left: 20, right: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 NavigateStatus(a: 147, b: 177, c: 166, o: 1),
                 NavigateStatus(a: 147, b: 177, c: 166, o: 1),

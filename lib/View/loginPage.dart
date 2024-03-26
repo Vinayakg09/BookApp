@@ -1,8 +1,8 @@
 import 'package:book_app/Utils/navigate_status.dart';
+import 'package:book_app/Utils/toast.dart';
 import 'package:book_app/View/otpPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginPage extends StatelessWidget {
@@ -12,6 +12,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: const Row(
@@ -22,7 +23,7 @@ class LoginPage extends StatelessWidget {
               color: Colors.white,
             ),
             Text(
-              "BookApp",
+              "Book Bazaar",
               style: TextStyle(color: Colors.white),
             )
           ],
@@ -32,7 +33,7 @@ class LoginPage extends StatelessWidget {
         child: Column(
           children: [
             const Padding(
-              padding: EdgeInsets.only(left: 80, right: 80),
+              padding: EdgeInsets.only(left: 20, right: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -108,24 +109,12 @@ class LoginPage extends StatelessWidget {
                                   )),
                           (route) => false);
                     } else {
-                      final snackBar = SnackBar(
-                        content: Text(
-                          "Please enter email",
-                          style: GoogleFonts.robotoSerif(color: Colors.white),
-                        ),
-                        duration: const Duration(seconds: 3),
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      toast().toastMessage("Please enter email", Colors.red);
                     }
                   } catch (e) {
-                    final snackBar = SnackBar(
-                        content: Text("$e Try after some time!!",
-                          style: GoogleFonts.robotoSerif(color: Colors.white),
-                        ),
-                        duration: const Duration(seconds: 3),
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-
+                    debugPrint(e.toString());
+                    toast()
+                        .toastMessage("$e Try after some time!!", Colors.red);
                   }
                 },
                 style: ElevatedButton.styleFrom(
@@ -138,63 +127,63 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 32,
-            ),
-            const Padding(
-              padding: EdgeInsets.only(left: 40, right: 40),
-              child: Row(
-                children: [
-                  Expanded(
-                      child: Divider(
-                    color: Color.fromRGBO(65, 62, 62, 1),
-                    thickness: 5,
-                  )),
-                  Padding(
-                      padding: EdgeInsets.only(left: 10, right: 10),
-                      child: Text(
-                        'Or',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16),
-                      )),
-                  Expanded(
-                      child: Divider(
-                    color: Color.fromRGBO(65, 62, 62, 1),
-                    thickness: 5,
-                  ))
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 45,
-            ),
-            SizedBox(
-              width: 225,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromRGBO(112, 171, 181, 0.37),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10))),
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Icon(
-                      Icons.apple_sharp,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      'Continue with Apple',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w500),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            // const SizedBox(
+            //   height: 32,
+            // ),
+            // const Padding(
+            //   padding: EdgeInsets.only(left: 40, right: 40),
+            //   child: Row(
+            //     children: [
+            //       Expanded(
+            //           child: Divider(
+            //         color: Color.fromRGBO(65, 62, 62, 1),
+            //         thickness: 5,
+            //       )),
+            //       Padding(
+            //           padding: EdgeInsets.only(left: 10, right: 10),
+            //           child: Text(
+            //             'Or',
+            //             style: TextStyle(
+            //                 color: Colors.white,
+            //                 fontWeight: FontWeight.w500,
+            //                 fontSize: 16),
+            //           )),
+            //       Expanded(
+            //           child: Divider(
+            //         color: Color.fromRGBO(65, 62, 62, 1),
+            //         thickness: 5,
+            //       ))
+            //     ],
+            //   ),
+            // ),
+            // const SizedBox(
+            //   height: 45,
+            // ),
+            // SizedBox(
+            //   width: 225,
+            //   height: 50,
+            //   child: ElevatedButton(
+            //     onPressed: () {},
+            //     style: ElevatedButton.styleFrom(
+            //         backgroundColor: const Color.fromRGBO(112, 171, 181, 0.37),
+            //         shape: RoundedRectangleBorder(
+            //             borderRadius: BorderRadius.circular(10))),
+            //     child: const Row(
+            //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //       children: [
+            //         Icon(
+            //           Icons.apple_sharp,
+            //           color: Colors.white,
+            //         ),
+            //         Text(
+            //           'Continue with Apple',
+            //           style: TextStyle(
+            //               color: Colors.white, fontWeight: FontWeight.w500),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

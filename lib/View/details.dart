@@ -1,7 +1,9 @@
+import 'dart:io';
 import 'package:book_app/Utils/textfield.dart';
 import 'package:book_app/View/genre.dart';
 import 'package:book_app/View/loginPage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Details extends StatefulWidget {
   const Details({super.key});
@@ -19,6 +21,22 @@ class _DetailsState extends State<Details> {
   TextEditingController age = TextEditingController();
   List<String> colleges = ["Parul University", "Delhi University"];
   String? selectedCollege;
+  String? imagePath;
+
+  Future<void> uploadProfile() async {
+    var image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      File file = File(image.path);
+      String fileName = file.path.split('/').last;
+
+      imagePath = await supabase.storage.from('profile').upload(
+            fileName,
+            file,
+            //fileOptions: const FileOptions(cacheControl: '3600', upsert: false),
+          );
+      debugPrint(imagePath);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +50,7 @@ class _DetailsState extends State<Details> {
               color: Colors.white,
             ),
             Text(
-              "BookApp",
+              "Book Bazaar",
               style: TextStyle(color: Colors.white),
             )
           ],
@@ -51,19 +69,21 @@ class _DetailsState extends State<Details> {
                       height: 90,
                       width: 90,
                       decoration: const BoxDecoration(
-                        //borderRadius: BorderRadius.circular(20),
                         shape: BoxShape.circle,
                         color: Colors.white,
                       ),
                       child: ClipRRect(
-                          //borderRadius: BorderRadius.circular(80),
-                          child: Image.asset("images/detective.png")),
+                          child: imagePath != null
+                              ? Image.network(imagePath!)
+                              : Image.asset("images/detective.png")),
                     ),
                     const SizedBox(
                       height: 15,
                     ),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          uploadProfile();
+                        },
                         child: const Text(
                           "Upload your image",
                           style: TextStyle(
@@ -157,7 +177,7 @@ class _DetailsState extends State<Details> {
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => GenreSelect()),
+                              builder: (context) => const GenreSelect()),
                           (route) => false);
                     },
                     style: ElevatedButton.styleFrom(
@@ -174,54 +194,6 @@ class _DetailsState extends State<Details> {
                   ),
                 ),
               )
-              // SizedBox(
-              //   height: 160,
-              //   child: DropdownButtonFormField(
-              //     hint: Text("College", style: GoogleFonts.robotoSerif(color: Colors.white),),
-              //     dropdownColor: Color.fromRGBO(203, 240, 255, 0.37),
-              //     style: TextStyle(color: Colors.white),
-              //     isDense: true,
-              //     iconEnabledColor: Colors.white,
-              //     items: colleges
-              //         .map((colleges) =>
-              //             DropdownMenuItem(value: colleges, child: Text(colleges)))
-              //         .toList(),
-              //     onChanged: (value) {
-              //       setState(() {
-              //         selectedCollege = value;
-              //       });
-              //     },
-              //     borderRadius: BorderRadius.circular(10),
-              //     decoration: InputDecoration(
-              //         fillColor: Color.fromRGBO(203, 240, 255, 0.37),
-              //         filled: true,
-              //         ),
-              //   ),
-              // ),
-              // SizedBox(
-              //   height: 160,
-              //   child: DropdownButtonFormField(
-              //     iconEnabledColor: Colors.white,
-              //     hint: Text("age", style: GoogleFonts.robotoSerif(color: Colors.white),),
-              //     dropdownColor: Color.fromRGBO(203, 240, 255, 0.37),
-              //     style: TextStyle(color: Colors.white),
-              //     //isDense: true,
-              //     items: colleges
-              //         .map((colleges) =>
-              //             DropdownMenuItem(value: colleges, child: Text(colleges)))
-              //         .toList(),
-              //     onChanged: (value) {
-              //       setState(() {
-              //         selectedCollege = value;
-              //       });
-              //     },
-              //     borderRadius: BorderRadius.circular(10),
-              //     decoration: InputDecoration(
-              //         fillColor: Color.fromRGBO(203, 240, 255, 0.37),
-              //         filled: true,
-              //         ),
-              //   ),
-              // ),
             ],
           ),
         ),

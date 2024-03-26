@@ -16,7 +16,7 @@ class appBar extends StatelessWidget implements PreferredSizeWidget {
             color: Colors.white,
           ),
           Text(
-            "BookApp",
+            "Book Bazaar",
             style: TextStyle(color: Colors.white),
           )
         ],
@@ -37,5 +37,5 @@ class appBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

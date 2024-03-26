@@ -1,3 +1,4 @@
+import 'package:book_app/View/demoHome.dart';
 import 'package:book_app/View/home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -83,7 +84,7 @@ class _GenreSelectState extends State<GenreSelect> {
               color: Colors.white,
             ),
             Text(
-              "BookApp",
+              "Book Bazaar",
               style: TextStyle(color: Colors.white),
             )
           ],
@@ -177,7 +178,7 @@ class _GenreSelectState extends State<GenreSelect> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 35,
           ),
           Center(
@@ -188,7 +189,7 @@ class _GenreSelectState extends State<GenreSelect> {
                 onPressed: () {
                   Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(builder: (context) => Home()),
+                      MaterialPageRoute(builder: (context) => const DemoHome()),
                       (route) => false);
                 },
                 style: ElevatedButton.styleFrom(
