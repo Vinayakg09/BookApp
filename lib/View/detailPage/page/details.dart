@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'package:book_app/Utils/textfield.dart';
-import 'package:book_app/View/genre.dart';
-import 'package:book_app/View/loginPage.dart';
+import 'package:book_app/View/Utils/textfield.dart';
+import 'package:book_app/View/homePage/page/home.dart';
+import 'package:book_app/View/loginPage/page/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -110,7 +110,7 @@ class _DetailsState extends State<Details> {
               const SizedBox(
                 height: 35,
               ),
-              textfield(
+              MyTextField(
                 controller: firstName,
                 hinttext: "FirstName",
                 //colName: "user_first_name",
@@ -118,7 +118,7 @@ class _DetailsState extends State<Details> {
               const SizedBox(
                 height: 30,
               ),
-              textfield(
+              MyTextField(
                 controller: lastName,
                 hinttext: "LastName",
                 //colName: "user_last_name",
@@ -126,7 +126,7 @@ class _DetailsState extends State<Details> {
               const SizedBox(
                 height: 30,
               ),
-              textfield(
+              MyTextField(
                 controller: phone,
                 hinttext: "Phone Number",
                 //colName: "user_phone_no",
@@ -134,7 +134,7 @@ class _DetailsState extends State<Details> {
               const SizedBox(
                 height: 30,
               ),
-              textfield(
+              MyTextField(
                 controller: college,
                 hinttext: "College Name",
                 //colName: "user_college",
@@ -142,7 +142,7 @@ class _DetailsState extends State<Details> {
               const SizedBox(
                 height: 30,
               ),
-              textfield(
+              MyTextField(
                 controller: gender,
                 hinttext: "Gender",
                 //colName: "user_gender",
@@ -150,7 +150,7 @@ class _DetailsState extends State<Details> {
               const SizedBox(
                 height: 30,
               ),
-              textfield(
+              MyTextField(
                 controller: age,
                 hinttext: "Age",
                 //colName: "user_age",
@@ -176,8 +176,7 @@ class _DetailsState extends State<Details> {
                       }).eq("user_id", userId);
                       Navigator.pushAndRemoveUntil(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const GenreSelect()),
+                          MaterialPageRoute(builder: (context) => Home()),
                           (route) => false);
                     },
                     style: ElevatedButton.styleFrom(

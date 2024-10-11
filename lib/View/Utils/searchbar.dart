@@ -8,11 +8,11 @@ class searchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       controller: search,
-      style: TextStyle(color: Colors.white),
+      style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
         hintText: 'Search...',
-        hintStyle: TextStyle(color: Colors.white),
-        prefixIcon: Icon(Icons.search, color: Colors.white),
+        hintStyle: const TextStyle(color: Colors.white),
+        prefixIcon: const Icon(Icons.search, color: Colors.white),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),

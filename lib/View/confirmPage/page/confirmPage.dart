@@ -1,7 +1,7 @@
-import 'package:book_app/View/details.dart';
+import 'package:book_app/View/detailPage/page/details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../Utils/navigate_status.dart';
+import '../../Utils/navigate_status.dart';
 
 class ConfirmPage extends StatelessWidget {
   const ConfirmPage({super.key});
@@ -40,10 +40,14 @@ class ConfirmPage extends StatelessWidget {
           const SizedBox(
             height: 80,
           ),
-          const Icon(
-            CupertinoIcons.checkmark_seal_fill,
-            color: Colors.white,
-            size: 150,
+          TweenAnimationBuilder(
+            tween: Tween<double>(begin: 0, end: 150),
+            duration: const Duration(milliseconds: 1500),
+            builder: (context, value, child) =>  Icon(
+              CupertinoIcons.checkmark_seal_fill,
+              color: Colors.white,
+              size: value,
+            ),
           ),
           const SizedBox(
             height: 40,

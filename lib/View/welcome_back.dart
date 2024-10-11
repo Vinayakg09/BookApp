@@ -1,17 +1,16 @@
-import 'package:book_app/Utils/navigate_status.dart';
-import 'package:book_app/View/demoHome.dart';
-import 'package:book_app/View/home.dart';
-import 'package:book_app/View/loginPage.dart';
+import 'package:book_app/View/Utils/navigate_status.dart';
+import 'package:book_app/View/homePage/page/home.dart';
+import 'package:book_app/View/loginPage/page/loginPage.dart';
 import 'package:flutter/material.dart';
 
-class welcome extends StatefulWidget {
-  const welcome({super.key});
+class Welcome extends StatefulWidget {
+  const Welcome({super.key});
 
   @override
-  State<welcome> createState() => _welcomeState();
+  State<Welcome> createState() => _WelcomeState();
 }
 
-class _welcomeState extends State<welcome> {
+class _WelcomeState extends State<Welcome> {
   var User_name = [];
   Future<void> getUserName() async {
     final user = supabase.auth.currentUser!;
@@ -56,8 +55,8 @@ class _welcomeState extends State<welcome> {
             children: [
               const Padding(
                 padding: EdgeInsets.only(left: 20, right: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     NavigateStatus(a: 147, b: 177, c: 166, o: 1),
                     NavigateStatus(a: 147, b: 177, c: 166, o: 1),
@@ -96,7 +95,7 @@ class _welcomeState extends State<welcome> {
                   onPressed: () {
                     Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (context) => const DemoHome()),
+                        MaterialPageRoute(builder: (context) => Home()),
                         (route) => false);
                   },
                   style: ElevatedButton.styleFrom(

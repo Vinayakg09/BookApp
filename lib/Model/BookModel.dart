@@ -1,24 +1,32 @@
-class Book {
-  final int id;
-  final String title;
-  final String author;
+class BookModel {
+  final String id;
+  final String bookName;
+  final String authorName;
+  final String edition;
+  final String condition;
+  final String image;
   final String genre;
-  final String imageUrl;
 
-  Book(
-      {required this.id,
-      required this.title,
-      required this.author,
-      required this.genre,
-      required this.imageUrl});
+  BookModel({
+    required this.id,
+    required this.bookName,
+    required this.authorName,
+    required this.edition,
+    required this.condition,
+    required this.image,
+    required this.genre,
+  });
 
-  factory Book.fromJson(Map<String, dynamic> json) {
-    return Book(
-      id: json['id'],
-      title: json['title'],
-      author: json['author'],
+  // A factory constructor to create a book from JSON
+  factory BookModel.fromJson(Map<String, dynamic> json) {
+    return BookModel(
+      id: json['_id'],
+      bookName: json['bookName'],
+      authorName: json['authorName'],
+      edition: json['edition'],
+      condition: json['condition'],
+      image: json['image'],
       genre: json['genre'],
-      imageUrl: json['image_url'],
     );
   }
 }
